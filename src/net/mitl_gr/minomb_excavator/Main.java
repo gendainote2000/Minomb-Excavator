@@ -22,27 +22,27 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Minomb Excavator");
 
-		WebView webview = new WebView();
-		webview.getEngine().load("http://google.co.jp/");
+		WebView webView = new WebView();
+		webView.getEngine().load("http://google.co.jp/");
 
 		StackPane root = new StackPane();
-		root.getChildren().add(webview);
+		root.getChildren().add(webView);
 
 		Scene scene = new Scene(root, 720, 480);
-		
+
 		//垂直方向にレイアウトするコンテナ
 		VBox vbox = new VBox(10);
 		vbox.setLayoutY(10);
-		
+
 		//水平方向にレイアウトするコンテナ
 		HBox hbox = new HBox(10);
 		hbox.setAlignment(Pos.CENTER);
-		
+
 		//テキスト入力
 		TextField field = new TextField();
 		field.setPrefColumnCount(20);
 		hbox.getChildren().add(field);
-		
+
 		//ボタン
 		Button button = new Button("検索");
 		button.setOnAction(new EventHandler<ActionEvent>(){
@@ -51,20 +51,20 @@ public class Main extends Application {
 				 * WebEngineでロードする
 				 */
 				String url = field.getText();
-				webview.getEngine().load(url);
+				webView.getEngine().load(url);
 			}
 		});
 		hbox.getChildren().add(button);
-		
+
 		//HBoxをVBoxに貼る
 		vbox.getChildren().add(hbox);
-		
+
 		//WebViewをVBoxに貼る
-		vbox.getChildren().add(webview);
-		
+		vbox.getChildren().add(webView);
+
 		//VBoxをルートに貼る
 		root.getChildren().add(vbox);
-		
+
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
